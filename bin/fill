@@ -6,4 +6,6 @@ if [ $# -eq 1 ]; then
   fill="$1"
 fi
 
-sed "s/^\t/${fill}\t/" | perl -pe "s/\t(?=\t)/\t${fill}/g"
+sed "s/^\t/${fill}\t/" | \
+sed "s/\t$/\t${fill}/" | \
+perl -pe "s/\t(?=\t)/\t${fill}/g"
